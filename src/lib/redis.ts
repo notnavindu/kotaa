@@ -1,16 +1,9 @@
-import Redis from 'ioredis';
-import { REDIS_CONNECTION } from '$env/static/private';
+import { Redis } from '@upstash/redis';
+import { UPSTASH_REDIS_REST_URL, UPSTASH_REDIS_REST_TOKEN } from '$env/static/private';
 
-const connectionString = REDIS_CONNECTION;
+const redis = new Redis({
+	url: UPSTASH_REDIS_REST_URL,
+	token: UPSTASH_REDIS_REST_TOKEN
+});
 
-export const MOVIE_IDS_KEY = 'movie_ids';
-
-console.log(REDIS_CONNECTION);
-
-export default connectionString
-	? new Redis(REDIS_CONNECTION, {
-			tls: {
-				rejectUnauthorized: false
-			}
-	  })
-	: new Redis();
+export default redis;

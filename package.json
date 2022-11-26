@@ -38,6 +38,6 @@
 	"dependencies": {
 		"@supabase/auth-helpers-sveltekit": "^0.8.5",
 		"@supabase/supabase-js": "^2.0.5",
-		"ioredis": "^5.2.4"
+		"@upstash/redis": "^1.18.1"
 	}
 }
