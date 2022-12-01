@@ -17,4 +17,8 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Kotaa</title>
+</svelte:head>
+
 <slot />

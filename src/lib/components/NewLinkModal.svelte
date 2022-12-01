@@ -49,31 +49,34 @@
 	>
 		<button class="absolute right-4 top-3 opacity-50" on:click={closeModal}>✕</button>
 
-		<div class="flex flex-col gap-3">
-			<label>
-				Long Link
-				<input
-					bind:value={link}
-					placeholder="URL"
-					class="w-full bg-zinc-800 border border-zinc-400 px-2 py-1 rounded-md mt-2"
-				/>
-			</label>
+		<form on:submit|preventDefault={createNewLink}>
+			<div class="flex flex-col gap-3">
+				<label>
+					Long Link
+					<input
+						required
+						bind:value={link}
+						placeholder="URL"
+						class="w-full bg-zinc-800 border border-zinc-400 px-2 py-1 rounded-md mt-2"
+					/>
+				</label>
 
-			<label>
-				Slug
-				<input
-					bind:value={slug}
-					placeholder="/"
-					class="w-full bg-zinc-800 border border-zinc-400 px-2 py-1 rounded-md mt-2"
-				/>
-			</label>
+				<label>
+					Slug
+					<input
+						required
+						bind:value={slug}
+						placeholder="/"
+						class="w-full bg-zinc-800 border border-zinc-400 px-2 py-1 rounded-md mt-2"
+					/>
+				</label>
 
-			<button
-				on:click={createNewLink}
-				disabled={loading}
-				class:opacity-50={loading}
-				class="w-full py-2 bg-zinc-700 rounded-md mt-4 hover:bg-zinc-600">Shorten</button
-			>
-		</div>
+				<button
+					disabled={loading}
+					class:opacity-50={loading}
+					class="w-full py-2 bg-violet-700 rounded-md mt-4 hover:bg-violet-600">Shorten</button
+				>
+			</div>
+		</form>
 	</div>
 </div>
