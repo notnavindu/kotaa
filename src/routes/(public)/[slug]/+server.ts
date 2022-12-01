@@ -7,10 +7,12 @@ export async function GET(event: any) {
 	const { slug } = event.params;
 	if (slug == 'favicon.ico') return new Response(null);
 
-	const [url, val] = await Promise.all([
-		Redis.hget('LINKS', slug),
-		Redis.hincrby('CLICKS', slug, 1)
-	]);
+	const pipeline = Redis.pipeline();
+
+	pipeline.hget('LINKS', slug);
+	pipeline.hincrby('CLICKS', slug, 1);
+
+	const [url, val] = await pipeline.exec();
 
 	if (!url) throw redirect(301, 'https://google.com');
 

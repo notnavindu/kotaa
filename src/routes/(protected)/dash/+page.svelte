@@ -1,7 +1,11 @@
 <script lang="ts">
+	import { supabaseClient } from '$lib/supabaseClient';
+	import type { AuthSession } from '@supabase/supabase-js';
 	import type { PageData } from './$types';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
+	export let session: AuthSession = $page.data.session;
 
 	let link: string;
 	let slug: string;
@@ -9,15 +13,29 @@
 
 	const createNewLink = async () => {
 		loading = true;
-		const data = {
+		const postData = {
 			[slug]: link
 		};
 
 		await fetch('/link', {
 			method: 'POST',
-			body: JSON.stringify(data)
+			body: JSON.stringify(postData)
 		});
 		loading = false;
+	};
+
+	const signOut = async () => {
+		try {
+			loading = true;
+			let { error } = await supabaseClient.auth.signOut();
+			if (error) throw error;
+		} catch (error) {
+			if (error instanceof Error) {
+				alert(error.message);
+			}
+		} finally {
+			loading = false;
+		}
 	};
 </script>
 
@@ -27,6 +45,7 @@
 	class:opacity-50={loading}
 >
 	<div class="text-3xl">Links</div>
+	<button on:click={signOut}>sign out TEMP {session.user.email}</button>
 	<div class="mt-8 flex flex-col gap-3">
 		<input
 			bind:value={link}
@@ -54,14 +73,16 @@
 				</tr>
 			</thead>
 			<tbody class="bg-zinc-800">
-				{#each Object.keys(data.links) as link (link)}
-					<tr>
-						<td class="py-4 px-6"> {link} </td>
+				{#if data.links}
+					{#each Object.keys(data.links) as link (link)}
+						<tr>
+							<td class="py-4 px-6"> {link} </td>
 
-						<td class="py-4 px-6"> {data.links[link]} </td>
-						<td class="py-4 px-6 w-12 text-right"> 1 </td>
-					</tr>
-				{/each}
+							<td class="py-4 px-6"> {data.links[link]} </td>
+							<td class="py-4 px-6 w-12 text-right"> 1 </td>
+						</tr>
+					{/each}
+				{/if}
 			</tbody>
 		</table>
 	</div>
