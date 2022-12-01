@@ -51,11 +51,15 @@
 {/if}
 
 <div class="w-full max-w-5xl p-8 m-auto mt-8">
-	<div class="flex justify-between">
-		<div class="text-3xl">Dashboard</div>
+	<div class="flex items-center justify-between">
+		<div class="flex items-start justify-center gap-3 text-3xl leading-none">
+			<img class="w-8" src="/logo.png" alt="logo" />
+			Kotaa
+		</div>
+
 		<button
 			on:click={() => (modalOpen = true)}
-			class="w-fit py-1 px-5 bg-violet-600 rounded-md mt-4 hover:bg-violet-500">New</button
+			class="w-fit py-1 px-5 bg-violet-600 rounded-md hover:bg-violet-500">New</button
 		>
 	</div>
 
