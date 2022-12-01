@@ -37,6 +37,13 @@
 			loading = false;
 		}
 	};
+
+	$: link && slugify();
+
+	const slugify = () => {
+		let segments = new URL(link).host.split('.');
+		slug = segments[segments.length - 2];
+	};
 </script>
 
 <div
@@ -79,7 +86,7 @@
 							<td class="py-4 px-6"> {link} </td>
 
 							<td class="py-4 px-6"> {data.links[link]} </td>
-							<td class="py-4 px-6 w-12 text-right"> 1 </td>
+							<td class="py-4 px-6 w-12 text-right"> {data.clicks[link] || 0} </td>
 						</tr>
 					{/each}
 				{/if}

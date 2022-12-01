@@ -2,7 +2,12 @@ import redis from '$lib/redis';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({}) {
-	const links = await redis.hgetall('LINKS');
+	const pipeline = redis.pipeline();
 
-	return { links: links };
+	pipeline.hgetall('LINKS');
+	pipeline.hgetall('CLICKS');
+
+	const [links, clicks] = await pipeline.exec<[any, any]>();
+
+	return { links: links, clicks: clicks };
 }
