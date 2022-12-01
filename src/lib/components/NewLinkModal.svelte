@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { invalidate, invalidateAll } from '$app/navigation';
+	import { invalidateAll } from '$app/navigation';
 
 	let link: string;
 	let slug: string;

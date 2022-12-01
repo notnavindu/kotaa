@@ -3,10 +3,7 @@
 	import { supabaseClient } from '$lib/supabaseClient';
 
 	let loading = false;
-	let email: string;
-	let password: string;
 
-	// TODO: @Nav
 	const handleLogin = async () => {
 		try {
 			loading = true;
@@ -27,17 +24,14 @@
 	};
 </script>
 
-<form class="row flex-center flex" on:submit|preventDefault={handleLogin}>
-	<div class="col-6 form-widget">
-		<h1 class="header">Log in</h1>
-
-		<div>
-			<input
-				type="submit"
-				class="button block"
-				value={loading ? 'Loading' : 'Login'}
-				disabled={loading}
-			/>
-		</div>
-	</div>
-</form>
+<div class="w-full h-screen flex items-center justify-center flex-col">
+	<div class="text-3xl mb-4">Kotaa</div>
+	<form on:submit|preventDefault={handleLogin}>
+		<input
+			type="submit"
+			class="w-full max-w-lg bg-zinc-700 py-1 px-4 rounded-md"
+			value={loading ? 'Loading' : 'Sign in with Google'}
+			disabled={loading}
+		/>
+	</form>
+</div>
