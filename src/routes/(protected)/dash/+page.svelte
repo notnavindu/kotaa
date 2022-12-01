@@ -3,26 +3,14 @@
 	import type { AuthSession } from '@supabase/supabase-js';
 	import type { PageData } from './$types';
 	import { page } from '$app/stores';
+	import NewLinkModal from '$lib/components/NewLinkModal.svelte';
+	import { flip } from 'svelte/animate';
 
 	export let data: PageData;
 	export let session: AuthSession = $page.data.session;
 
-	let link: string;
-	let slug: string;
+	let modalOpen = false;
 	let loading = false;
-
-	const createNewLink = async () => {
-		loading = true;
-		const postData = {
-			[slug]: link
-		};
-
-		await fetch('/link', {
-			method: 'POST',
-			body: JSON.stringify(postData)
-		});
-		loading = false;
-	};
 
 	const signOut = async () => {
 		try {
@@ -37,40 +25,24 @@
 			loading = false;
 		}
 	};
-
-	$: link && slugify();
-
-	const slugify = () => {
-		let segments = new URL(link).host.split('.');
-		slug = segments[segments.length - 2];
-	};
 </script>
 
-<div
-	class="w-full max-w-2xl m-auto p-8"
-	class:pointer-events-none={loading}
-	class:opacity-50={loading}
->
-	<div class="text-3xl">Links</div>
-	<button on:click={signOut}>sign out TEMP {session.user.email}</button>
-	<div class="mt-8 flex flex-col gap-3">
-		<input
-			bind:value={link}
-			placeholder="Link"
-			class="w-full bg-zinc-800 border border-zinc-600 px-2 py-1 rounded-md"
-		/>
-		<input
-			bind:value={slug}
-			placeholder="/"
-			class="w-full bg-zinc-800 border border-zinc-600 px-2 py-1 rounded-md"
-		/>
-
-		<button on:click={createNewLink} class="w-full py-2 bg-zinc-800 rounded-md">Shorten</button>
-	</div>
-</div>
+{#if modalOpen}
+	<NewLinkModal on:ModalClose={() => (modalOpen = false)} />
+{/if}
 
 <div class="w-full max-w-5xl p-8 m-auto mt-8">
-	<div class="overflow-x-auto relative">
+	<div class="flex justify-between">
+		<div class="text-3xl">Dashboard</div>
+		<button
+			on:click={() => (modalOpen = true)}
+			class="w-fit py-1 px-5 bg-blue-700 rounded-md mt-4 hover:bg-blue-600">New</button
+		>
+	</div>
+
+	<button on:click={signOut}>sign out TEMP {session.user.email}</button>
+
+	<div class="overflow-x-auto relative mt-6">
 		<table class="w-full text-sm text-left rounded-md overflow-hidden">
 			<thead class="text-xs uppercase bg-zinc-900 ">
 				<tr>
@@ -82,7 +54,7 @@
 			<tbody class="bg-zinc-800">
 				{#if data.links}
 					{#each Object.keys(data.links) as link (link)}
-						<tr>
+						<tr animate:flip={{ duration: 300 }}>
 							<td class="py-4 px-6"> {link} </td>
 
 							<td class="py-4 px-6"> {data.links[link]} </td>
