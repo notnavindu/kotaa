@@ -7,6 +7,7 @@
 	import { flip } from 'svelte/animate';
 	import { invalidateAll } from '$app/navigation';
 	import { sortAlpha } from '$lib/util/helpers.util';
+	import Copy from '$lib/icons/copy.icon.svelte';
 
 	export let data: PageData;
 	export let session: AuthSession = $page.data.session;
@@ -70,7 +71,7 @@
 					<th scope="col" class="py-3 px-6"> Slug </th>
 					<th scope="col" class="py-3 px-6"> URL </th>
 					<th scope="col" class="py-3 px-6"> Clicks </th>
-					<th scope="col" class="py-3 px-6"> Delete </th>
+					<th scope="col" class="py-3 px-2 text-center"> Actions </th>
 				</tr>
 			</thead>
 			<tbody class="bg-zinc-800">
@@ -81,7 +82,13 @@
 
 							<td class="py-4 px-6 opacity-60"> {data.links[link]} </td>
 							<td class="py-4 px-6 w-12 text-right"> {data.clicks[link] || 0} </td>
-							<td class="py-4 px-6 text-center text-red-300">
+							<td class="py-4 px-2 text-red-300 flex items-center justify-center gap-5">
+								<button
+									class="opacity-80"
+									on:click={() => navigator.clipboard.writeText(`https://link.navindu.me/${link}`)}
+								>
+									<Copy />
+								</button>
 								<button on:click={() => deleteConfirmation(link)}> ✕ </button>
 							</td>
 						</tr>
