@@ -50,10 +50,10 @@
 
 - [About The Project](#about-the-project)
   - [Built With](#built-with)
+- [Examples](#examples)
 - [Getting Started](#getting-started)
-  - [Semi-auto Installation](#semi-auto-installation)
+  - [Vercel Deploy](#vercel-deploy)
   - [Manual Installation](#manual-installation)
-- [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 
@@ -73,51 +73,38 @@ TODO:
 - SvelteKit
 - Redis (Upstash)
 - Supabase (For authentication)
-- Vercel Edge
+- Vercel Edge Network
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Examples
+
+- [link.navindu.me/instagram](https://link.navindu.me/instagram)
+- [link.navindu.me/twitter](https://link.navindu.me/twitter)
+- [link.navindu.me/nud3s](https://link.navindu.me/nud3s)
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-### Semi-auto Installation
+### Vercel Deploy
 
 TODO: Vercel deploy button
 
 ### Manual Installation
 
 1. Fork & Clone
-2. Copy `.env.example` and rename it to `.env`
-3. [supabase](https://supabase.com/) setup
-
+2. Run `npm install`
+3. Copy `.env.example` and rename it to `.env`
+4. Copy the upstash environment variables
+5. [supabase](https://supabase.com/) setup
    1. Create an account or login to your [supabase](https://supabase.com/) account
-   2. Add `PUBLIC_SUPABASE_URL` `PUBLIC_SUPABASE_ANON_KEY` values into the `.env` file. (You can get these values from supabase)
-
-4. [upstash](https://upstash.com/) setup
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-
-<!-- CONTRIBUTING -->
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+   2. Add `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_ANON_KEY` values into the `.env` file. (You can get these values from supabase)
+6. [upstash](https://upstash.com/) setup
+   1. Create a new project on upstash and you can find the env variables required for `upstash` from the upstash dashboard.
+   2. Copy those over to your local `.env` file
+7. Push and deploy the project to vercel. (Remember to add your environment variables!)
+8. Add a custom domain to your vercel project (like `link.navindu.me`) and you're good to go!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
