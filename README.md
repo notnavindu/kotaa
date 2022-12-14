@@ -53,6 +53,7 @@
   - [Built With](#built-with)
 - [Examples](#examples)
 - [Getting Started](#getting-started)
+  - [Environment Variables](#environment-variables)
   - [Vercel Deploy](#vercel-deploy)
   - [Manual Installation](#manual-installation)
 - [License](#license)
@@ -90,16 +91,28 @@ TODO:
 
 ## Getting Started
 
+### Environment Variables
+
+`PUBLIC_SUPABASE_URL`: This can be found in the "API" section of your Supabase project's settings
+`PUBLIC_SUPABASE_ANON_KEY`: This can be found in the "API" section of your Supabase project's settings
+`PUBLIC_ALLOWED_EMAILS`: Comma separated email address list which are allowed to access the dashboard. (Do not keep any spaces) e.g: `john@gmail.com,jane@gmail.com`
+
+The following values in the `.env` file will be auto filled if you are deploying directly to vercel. If not, you need to setup a project on [Upstash](https://upstash.com/) and copy these values from the dashboard.
+
 ### Vercel Deploy
 
-TODO: Vercel deploy button
+Easiest way to get up and running with Kotaa
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnotnavindu%2Fkotaa&env=PUBLIC_ALLOWED_EMAILS,PUBLIC_SUPABASE_URL,PUBLIC_SUPABASE_ANON_KEY&envDescription=API%20Keys%20needed%20for%20setup&envLink=https%3A%2F%2Fgithub.com%2Fnotnavindu%2Fkotaa&integration-ids=icfg_CP3voahogNsiMS0XWAQht6V9)
 
 ### Manual Installation
+
+If you don't like the blue Vercel "deploy" button.
 
 1. Fork & Clone
 2. Run `npm install`
 3. Copy `.env.example` and rename it to `.env`
-4. Copy the upstash environment variables
+4. Add your upstash environment variables
 5. [supabase](https://supabase.com/) setup
    1. Create an account or login to your [supabase](https://supabase.com/) account
    2. Add `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_ANON_KEY` values into the `.env` file. (You can get these values from supabase)
@@ -115,7 +128,7 @@ TODO: Vercel deploy button
 
 ## License
 
-Distributed under the TODO: License.
+Distributed under the GPL-3.0 License.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
