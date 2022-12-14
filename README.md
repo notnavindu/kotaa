@@ -103,7 +103,7 @@ The following values in the `.env` file will be auto filled if you are deploying
 
 Easiest way to get up and running with Kotaa
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnotnavindu%2Fkotaa&env=PUBLIC_ALLOWED_EMAILS,PUBLIC_SUPABASE_URL,PUBLIC_SUPABASE_ANON_KEY&envDescription=API%20Keys%20needed%20for%20setup&envLink=https%3A%2F%2Fgithub.com%2Fnotnavindu%2Fkotaa&integration-ids=icfg_CP3voahogNsiMS0XWAQht6V9)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnotnavindu%2Fkotaa&env=PUBLIC_ALLOWED_EMAILS,PUBLIC_SUPABASE_URL,PUBLIC_SUPABASE_ANON_KEY&envDescription=API%20Keys%20needed%20for%20setup&envLink=https%3A%2F%2Fgithub.com%2Fnotnavindu%2Fkotaa&integration-ids=oac_V3R1GIpkoJorr6fqyiwdhl17)
 
 ### Manual Installation
 
