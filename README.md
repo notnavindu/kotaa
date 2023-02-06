@@ -65,10 +65,7 @@
 
 ![Product Name Screen Shot][product-screenshot]
 
-⚠ DISCLAIMER: Documentation is still a work in progress
-
 Kotaa is a simple, personal, self-hostable URL shortner that can be deployed to the Vercel Edge network.
-TODO:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
